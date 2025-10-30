@@ -7,7 +7,7 @@
     "price": 20,
     "rating": 4.8,
     "slotsAvailable": 3,
-    "description": "Acoustic guitar classes for complete beginners.",
+    "description": "Learn to play the guitar from scratch with easy, beginner-friendly lessons designed for complete newcomers. You’ll understand chords, strumming patterns, and finger techniques while learning simple songs step by step. Each session builds confidence through hands-on practice and personalized guidance. By the end of the course, you’ll be able to play basic melodies, accompany yourself while singing, and continue your journey toward mastering the instrument in an enjoyable and relaxed way.",
     "image": "https://i.ibb.co.com/vxX7gMqP/Guiter.jpg",  
     "category": "Music"
   },
@@ -19,7 +19,7 @@
     "price": 10,
     "rating": 4.6,
     "slotsAvailable": 5,
-    "description": "Conversational English sessions for non-native speakers.",
+    "description": "Develop fluency and confidence in speaking English through interactive sessions focused on everyday communication. Practice real-life conversations, pronunciation, and vocabulary with guidance from an experienced instructor. You’ll engage in role-plays, discussions, and storytelling to improve your accent and listening skills. Perfect for students, professionals, or anyone aiming to express themselves naturally. These sessions build comfort in social and professional settings, helping you speak English smoothly and confidently in any situation.",
     "image": "https://i.ibb.co.com/RGhPn3YF/Spoken-English.jpg",
     "category": "Language"
   },
@@ -31,7 +31,7 @@
     "price": 25,
     "rating": 4.7,
     "slotsAvailable": 4,
-    "description": "Learn programming fundamentals using JavaScript in a beginner-friendly way.",
+    "description": "Start your programming journey with JavaScript — the language of the web. Learn how to write, debug, and understand code through fun projects and practical examples. You’ll master variables, loops, functions, and basic logic while creating interactive webpages. This beginner-friendly course helps you think like a programmer and build a solid foundation for advanced technologies. By the end, you’ll have the skills to create small web apps and continue exploring coding confidently.",
     "image": "https://i.ibb.co.com/s95NRsK0/Javascript.jpg",
     "category": "Technology"
   },
@@ -43,7 +43,7 @@
     "price": 15,
     "rating": 4.5,
     "slotsAvailable": 6,
-    "description": "Get started with digital art using Procreate or Photoshop.",
+    "description": "Unleash your creativity through digital painting with tools like Procreate or Photoshop. This beginner-friendly class introduces you to brushes, layers, color theory, and shading techniques. You’ll learn how to transform sketches into polished artworks while experimenting with light, texture, and composition. Each session includes hands-on exercises and personalized feedback to improve your artistic style. By the end, you’ll confidently create stunning digital illustrations that reflect your imagination and artistic growth.",
     "image": "https://i.ibb.co.com/0TsxQ59/Digital-Painting.jpg",
     "category": "Art"
   },
@@ -55,7 +55,7 @@
     "price": 18,
     "rating": 4.9,
     "slotsAvailable": 2,
-    "description": "Bake cookies, cakes, and pastries right from your kitchen!",
+    "description": "Discover the joy of baking in your own kitchen with simple, delicious recipes for cakes, cookies, and pastries. This course teaches essential techniques like measuring ingredients, mixing dough, and perfecting textures. You’ll learn how to decorate desserts beautifully and bake with confidence. Ideal for beginners or hobby bakers, every session focuses on practical skills and creativity. Impress your family and friends with homemade treats that taste as good as they look!",
     "image": "https://i.ibb.co.com/wNz0RkfQ/Home-Baking.jpg",
     "category": "Cooking"
   },
@@ -67,7 +67,7 @@
     "price": 12,
     "rating": 4.7,
     "slotsAvailable": 8,
-    "description": "Gentle yoga sessions to improve mindfulness and reduce stress.",
+    "description": "Experience calmness, flexibility, and mental clarity through gentle yoga sessions designed for all fitness levels. You’ll learn basic postures, breathing techniques, and mindfulness exercises that help relieve stress and tension. Each class focuses on body awareness and relaxation while improving strength and balance. Whether you’re a beginner or looking to unwind after a long day, these guided practices will help you achieve inner peace and a healthier connection between body and mind.",
     "image": "https://i.ibb.co.com/LX6txwyh/Yoga.jpg",
     "category": "Fitness"
   },
@@ -79,7 +79,7 @@
     "price": 22,
     "rating": 4.4,
     "slotsAvailable": 5,
-    "description": "Learn how to take professional-quality photos using your DSLR camera.",
+    "description": "Learn to capture stunning photographs using your DSLR camera with hands-on lessons about lighting, focus, and composition. You’ll understand how to use manual settings, adjust shutter speed, and experiment with depth of field for creative results. Whether it’s portraits, landscapes, or everyday shots, this course helps you see the world through a photographer’s eye. Gain practical experience through guided exercises that will turn your ordinary photos into visually powerful storytelling images.",
     "image": "https://i.ibb.co.com/xqp9TjRN/Phtoography.jpg",
     "category": "Photography"
   },
@@ -91,7 +91,7 @@
     "price": 15,
     "rating": 4.6,
     "slotsAvailable": 7,
-    "description": "Learn basic French vocabulary, pronunciation, and conversation.",
+    "description": "Immerse yourself in the beauty of the French language through engaging lessons focused on pronunciation, vocabulary, and everyday conversation. You’ll practice speaking, listening, and reading with native-level guidance. Learn to introduce yourself, order food, and express your thoughts confidently. Each class builds your understanding through interactive activities and cultural insights. Whether for travel, work, or fun, this course helps you speak French naturally and appreciate the elegance of the language.",
     "image": "https://i.ibb.co.com/PG0PQJZY/French-Language.jpg",
     "category": "Language"
   },
@@ -103,7 +103,7 @@
     "price": 14,
     "rating": 4.3,
     "slotsAvailable": 9,
-    "description": "Create social media posts, flyers, and logos using Canva tools.",
+    "description": "Bring your creative ideas to life by learning the fundamentals of graphic design using tools like Canva and Photoshop. This beginner course teaches color harmony, layout balance, and visual storytelling. You’ll design eye-catching social media posts, flyers, and logos with professional quality. Through practical projects and design challenges, you’ll gain an eye for detail and composition. Perfect for anyone wanting to create appealing visuals for personal or professional use with confidence.",
     "image": "https://i.ibb.co.com/8DYXgCfJ/Graphic-Design.jpg",
     "category": "Design"
   },
@@ -115,7 +115,7 @@
     "price": 16,
     "rating": 4.8,
     "slotsAvailable": 3,
-    "description": "Learn to cook classic Bangladeshi meals like biryani, bhuna, and halim.",
+    "description": "Explore the rich flavors of Bangladeshi cuisine by learning how to cook traditional dishes like biryani, bhuna, and halim. This class focuses on authentic recipes, spice blending, and perfect cooking techniques. You’ll gain hands-on experience preparing meals that celebrate cultural heritage. Each session emphasizes flavor balance, presentation, and the joy of cooking with love. Perfect for food enthusiasts eager to bring the taste of home-cooked authenticity to their own kitchen.",
     "image": "https://i.ibb.co.com/sp07zb4c/Cooking-Traditional.jpg",
     "category": "Cooking"
   },
@@ -127,7 +127,7 @@
     "price": 20,
     "rating": 4.9,
     "slotsAvailable": 5,
-    "description": "Enhance your storytelling and creative writing skills through guided practice.",
+    "description": "Discover your inner storyteller through guided creative writing sessions that explore imagination, structure, and emotion. You’ll learn how to craft engaging plots, believable characters, and meaningful dialogue. Each exercise focuses on developing your voice and confidence as a writer. Whether you love fiction, poetry, or journaling, this course helps you refine your style and overcome writer’s block. Express yourself freely and bring your thoughts to life with powerful written storytelling.",
     "image": "https://i.ibb.co.com/MDPW9XQR/Creative-writing.jpg",
     "category": "Writing"
   },
@@ -139,7 +139,7 @@
     "price": 30,
     "rating": 4.8,
     "slotsAvailable": 4,
-    "description": "Learn to build cross-platform mobile apps using React Native framework.",
+    "description": "Learn how to build mobile applications from scratch using React Native. This hands-on course guides you through creating layouts, managing data, and connecting APIs to make fully functional apps. You’ll understand coding best practices, component reuse, and design principles for both Android and iOS. Ideal for beginners, each session combines theory with real-world projects. By the end, you’ll have built your own simple app and gained confidence in mobile development.",
     "image": "https://i.ibb.co.com/9k675LKZ/App-development.jpg",
     "category": "Technology"
   },
@@ -151,7 +151,7 @@
     "price": 15,
     "rating": 4.5,
     "slotsAvailable": 6,
-    "description": "Learn blending, layering, and other watercolor painting methods.",
+    "description": "Explore the delicate art of watercolor painting by learning essential techniques like layering, blending, and controlling transparency. This course guides you through creating floral, landscape, and abstract pieces with step-by-step demonstrations. You’ll develop your brush control, color sense, and artistic confidence through creative exercises. Suitable for all skill levels, the sessions help you express emotion through color and fluid strokes while mastering the timeless beauty of watercolor as a medium.",
     "image": "https://i.ibb.co.com/ns3vLsBD/Watercolor-painting.jpg",
     "category": "Art"
   },
@@ -163,7 +163,7 @@
     "price": 25,
     "rating": 4.7,
     "slotsAvailable": 10,
-    "description": "Intense but beginner-friendly workouts for strength and endurance.",
+    "description": "Boost your energy, strength, and endurance with this beginner-friendly fitness bootcamp. Each session includes a mix of cardio, strength training, and stretching to help you tone muscles and improve stamina. The workouts are adaptable for all fitness levels and guided by professional instruction. Alongside physical training, you’ll learn proper form, breathing, and motivation techniques. It’s a fun and supportive way to build a consistent exercise habit and a healthier lifestyle.",
     "image": "https://i.ibb.co.com/vvPWvMwt/Fitness-Bootcamp.jpg",
     "category": "Fitness"
   },
@@ -175,7 +175,7 @@
     "price": 18,
     "rating": 4.9,
     "slotsAvailable": 5,
-    "description": "Overcome stage fear and communicate with confidence.",
+    "description": "Overcome stage fear and become a confident speaker with structured practice and feedback. Learn techniques to engage audiences, organize ideas clearly, and deliver impactful presentations. This course covers body language, tone control, and storytelling for persuasive communication. Each session includes practical exercises that help you grow your confidence step by step. Whether for school, career, or personal growth, you’ll gain the tools to speak with clarity, influence, and authenticity.",
     "image": "https://i.ibb.co.com/gZFjWRDH/Public-Speaking.jpg",
     "category": "Personal Development"
   }

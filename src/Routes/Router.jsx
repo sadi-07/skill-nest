@@ -6,6 +6,7 @@ import Login from '../AuthPage/Login';
 import Error from '../Components/Error';
 import SignUp from '../AuthPage/SignUp';
 import AllSkills from '../Pages/AllSkills';
+import SkillDetails from '../Pages/skillDetails';
 
 const Router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const Router = createBrowserRouter([
       },
       {
         path: "/all-skills", element: <AllSkills></AllSkills>
+      },
+      {
+        path: "/skill/:skillId", element: <SkillDetails></SkillDetails>,
+        loader: () => fetch("/skills.json")
       },
     ]
   },

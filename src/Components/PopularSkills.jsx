@@ -20,11 +20,11 @@ const PopularSkills = () => {
     return (
         <div className='max-w-11/12 mx-auto my-20'>
             <div className='flex justify-between items-center mb-7'>
-                <h2 className='font-bold text-5xl'>Popular Skills</h2>
-                <Link className='font-semibold text-lg btn py-5 px-7 bg-purple-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
+                <h2 className='font-bold text-4xl md:text-5xl'>Popular Skills</h2>
+                <Link className='font-semibold text-sm md:text-base btn py-3 px-5 md:py-5 md:px-7 bg-purple-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
  text-white flex items-center gap-2' to="/all-skills">Show all skills <FaLongArrowAltRight /></Link>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {skills.map((skill) => (
                     <div key={skill.skillId} className="p-4 rounded-xl border-gray-300 border">
                         <img className='w-full h-60 rounded-sm mb-6 ' src={skill.image} alt={skill.skillName} />
@@ -34,7 +34,7 @@ const PopularSkills = () => {
                             <p className='text-gray-600 font-semibold text-xl'>Price: {skill.price}$</p>
                         </div>
                         <div className='text-right'>
-                            <Link className='btn text-base font-semibold bg-blue-500 text-white'>View Details</Link>
+                            <Link to={`/skill/${skill.skillId}`} className='btn text-base font-semibold bg-blue-500 text-white hover:bg-blue-600'>View Details</Link>
                         </div>
                     </div>
                 ))}

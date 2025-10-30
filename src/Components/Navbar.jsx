@@ -35,11 +35,11 @@ const Navbar = () => {
                         <Link className='font-semibold text-gray-500 text-base' to="/contact">My Profile</Link>
                     </ul>
                 </div>
-                <div className="navbar-end gap-5 flex-col md:flex-row">
+                <div className="navbar-end gap-5 flex-row">
                     <Link to="/login" className="btn bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
- text-white py-5 font-semibold text-lg w-40 rounded-3xl">Log in</Link>
+ text-white py-5 font-semibold text-lg w-30 md:w-40 rounded-3xl">Log in</Link>
                     <Link to="/signup" className="btn bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
- text-white py-5 font-semibold text-lg w-40 rounded-3xl">Sign Up</Link>
+ text-white py-5 font-semibold text-lg w-30 md:w-40 rounded-3xl">Sign Up</Link>
                 </div>
             </div>
         </div>

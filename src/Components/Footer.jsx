@@ -4,14 +4,14 @@ import logo from "../assets/logo.png"
 const Footer = () => {
     return (
         <div>
-            <footer className="footer sm:footer-horizontal bg-gradient-to-r from-blue-500 to-purple-500 text-neutral-content p-10">
+            <div className='bg-gradient-to-r from-blue-500 to-purple-500'>
+                <footer className="footer footer-vertical md:footer-horizontal text-neutral-content p-10">
                 <aside>
                     <img src={logo} alt="" />
                     <p className='font-semibold text-lg text-white my-3'>
                         Build your nest of skills.
                     </p>
-                        <br />
-                        <p className='font-base text-base text-gray-200'>Since 2004</p>
+                    <p className='font-base text-base text-gray-200'>Since 2004</p>
                 </aside>
                 <nav>
                     <h6 className='footer-title font-semibold text-base text-black'>Contact Info</h6>
@@ -67,7 +67,15 @@ const Footer = () => {
                     </div>
                     
                 </nav>
+
+                
             </footer>
+
+
+            <h2 className='text-gray-200 text-lg font-semibold text-center pb-3 '>@All Rights Reserved by Skill Nest pvt. 2025</h2>
+            </div>
+            
+            
         </div>
     );
 };
