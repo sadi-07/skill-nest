@@ -5,6 +5,7 @@ import MainLayout from '../Layouts/mainLayout';
 import Login from '../AuthPage/Login';
 import Error from '../Components/Error';
 import SignUp from '../AuthPage/SignUp';
+import AllSkills from '../Pages/AllSkills';
 
 const Router = createBrowserRouter([
   {
@@ -19,6 +20,9 @@ const Router = createBrowserRouter([
       },
       {
         path: "/signup", element: <SignUp></SignUp>
+      },
+      {
+        path: "/all-skills", element: <AllSkills></AllSkills>
       },
     ]
   },

@@ -9,16 +9,26 @@ const Footer = () => {
                     <img src={logo} alt="" />
                     <p className='font-semibold text-lg text-white my-3'>
                         Build your nest of skills.
+                    </p>
                         <br />
                         <p className='font-base text-base text-gray-200'>Since 2004</p>
-                    </p>
                 </aside>
-                <nav className='text-black'>
+                <nav>
                     <h6 className='footer-title font-semibold text-base text-black'>Contact Info</h6>
                     <h2 className='font-semibold text-base'>
                         Email: kmsadi2004@gmail.com <br />
                         Phone: +8801612-117307
                     </h2>
+                </nav>
+
+                <nav>
+                <a href='#' className='font-semibold text-black footer-title hover:underline'>Privacy Policy</a>
+                <a href='#' className='font-semibold text-black footer-title hover:underline'>About Us</a>
+                <a href='#' className='font-semibold text-black footer-title hover:underline'>Terms & Conditions</a>
+                
+                </nav>
+
+                <nav className='text-black'>
                     <h6 className="footer-title font-semibold text-base text-black">Social</h6>
                     <div className="grid grid-flow-col gap-4">
                         <a>
@@ -55,7 +65,7 @@ const Footer = () => {
                             </svg>
                         </a>
                     </div>
-                    <a href='#' className='font-semibold text-base footer-title hover:underline'>Privacy Policy</a>
+                    
                 </nav>
             </footer>
         </div>

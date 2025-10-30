@@ -12,12 +12,12 @@ import banner05 from "../assets/banner-5.jpg"
 const Banner = () => {
     return (
         <div className='bg-base-100'>
-            <div className='max-w-11/12 mx-auto py-5'>
+            <div className=''>
             <Swiper
                 modules={[Pagination, Autoplay]}
                 pagination={{ clickable: true }}
                 autoplay={{ delay: 3000 }}
-                className="rounded-lg"
+                className=""
             >
                 <SwiperSlide>
                     <img className='w-screen h-60 md:h-140' src={banner01} alt="Skill Exchange" />
