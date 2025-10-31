@@ -20,9 +20,11 @@ const PopularSkills = () => {
     return (
         <div className='max-w-11/12 mx-auto my-20'>
             <div className='flex justify-between items-center mb-7'>
-                <h2 className='font-bold text-4xl md:text-5xl'>Popular Skills</h2>
+                <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+        Popular Skills
+      </h2>
                 <Link className='font-semibold text-sm md:text-base btn py-3 px-5 md:py-5 md:px-7 bg-purple-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
- text-white flex items-center gap-2' to="/all-skills">Show all skills <FaLongArrowAltRight /></Link>
+ text-white flex items-center gap-2' to="/skills">Show all skills <FaLongArrowAltRight /></Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {skills.map((skill) => (

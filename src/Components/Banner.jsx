@@ -11,7 +11,7 @@ import banner05 from "../assets/banner-5.jpg"
 
 const Banner = () => {
     return (
-        <div className='bg-base-100'>
+        <div className='bg-base-100 mt-16'>
             <div className=''>
             <Swiper
                 modules={[Pagination, Autoplay]}
