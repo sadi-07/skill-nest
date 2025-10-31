@@ -4,6 +4,7 @@ import PopularSkills from '../Components/PopularSkills';
 import Loading from '../Components/Loading';
 import TopRated from '../Components/TopRated';
 import HowItWorks from '../Components/HowItWorks';
+import Reviews from '../Components/Reviews';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             </Suspense>
             <TopRated></TopRated>
             <HowItWorks></HowItWorks>
+            <Reviews></Reviews>
         </div>
     );
 };

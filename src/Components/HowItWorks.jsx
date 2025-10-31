@@ -41,9 +41,9 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto py-20 px-6 text-center">
+    <section className="max-w-6xl mx-auto pt-5 pb-20 px-6 text-center">
       <h2
-        className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6 animate__animated animate__fadeInDown"
+        className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-6 animate__animated animate__fadeInDown"
         data-aos="fade-down"
       >
         How It Works
@@ -58,7 +58,7 @@ const HowItWorks = () => {
         {steps.map((step, index) => (
           <div
             key={index}
-            className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition-all duration-300"
+            className="bg-white border border-gray-200 rounded-2xl shadow-md p-6 hover:shadow-lg transition-all duration-300 hover:scale-105"
             data-aos="zoom-in"
             data-aos-delay={index * 200}
           >

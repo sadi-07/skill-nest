@@ -15,14 +15,14 @@ const Navbar = () => {
                             tabIndex="-1"
                             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 shadow">
                             <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/">Home</Link>
-                            <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/about">About</Link>
+                            
                             <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/skills">Skills</Link>
                             <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/contact">My Profile</Link>
                         </ul>
                     </div>
                     <Link
                         to="/"
-                        className="font-bold text-2xl md:text-3xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500"
+                        className="font-extrabold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500"
                     >
                         SKILL NEST
                     </Link>
@@ -31,7 +31,8 @@ const Navbar = () => {
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-5">
                         <NavLink className='font-semibold text-gray-500 text-base' to="/">Home</NavLink>
-                        <NavLink className='font-semibold text-gray-500 text-base' to="/about">About</NavLink>
+                        
+
                         <NavLink className='font-semibold text-gray-500 text-base' to="/skills">Skills</NavLink>
                         <NavLink className='font-semibold text-gray-500 text-base' to="/contact">My Profile</NavLink>
                     </ul>

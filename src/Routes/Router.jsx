@@ -17,12 +17,6 @@ const Router = createBrowserRouter([
         path: "/", element: <Home></Home>
       },
       {
-        path: "/login", element: <Login></Login>
-      },
-      {
-        path: "/signup", element: <SignUp></SignUp>
-      },
-      {
         path: "/skills", element: <AllSkills></AllSkills>,
         loader: () => fetch("/skills.json")
       },
@@ -34,7 +28,13 @@ const Router = createBrowserRouter([
   },
   {
     path: "*", element: <Error></Error>
-  }
+  },
+  {
+    path: "/login", element: <Login></Login>
+  },
+  {
+    path: "/signup", element: <SignUp></SignUp>
+  },
 ]);
 
 export default Router;

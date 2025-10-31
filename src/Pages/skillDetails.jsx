@@ -35,7 +35,7 @@ const SkillDetails = () => {
     };
 
     return (
-        <div className='max-w-11/12 mx-auto'>
+        <div className='max-w-11/12 mx-auto mt-25'>
             <div className='border rounded-xl border-gray-200 shadow-sm my-5 p-4 bg-base-100 flex lg:flex-row flex-col gap-5'>
                 <div className='flex-1'>
                     <img className='min-w-full mb-5 rounded-2xl' src={details.image} alt="" />
