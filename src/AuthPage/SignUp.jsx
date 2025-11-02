@@ -10,7 +10,7 @@ import {
   Sparkles,
   AlertCircle,
 } from "lucide-react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import { reload, updateProfile } from "firebase/auth";
@@ -18,6 +18,7 @@ import toast from "react-hot-toast";
 
 const SignUp = () => {
   const { createUser, setUser } = use(AuthContext);
+  const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
@@ -53,21 +54,20 @@ const SignUp = () => {
     console.log({name, email, photo, password});
 
     createUser(email, password)
-      .then(res => {
+      .then(async (res) => {
         const user = res.user;
         console.log(user);
 
-        updateProfile(user, {
+        await updateProfile(user, {
           displayName: name,
           photoURL: photo,
-        }).then(() => {
-          console.log("Created!!!")
-        }).catch(err => {
-          console.log(err.message);
-        })
+        });
 
+        setUser({ ...user, displayName: name, photoURL: photo });
+        toast.success("Account created successfully!")
+        
 
-        setUser(user);
+        navigate("/");
       })
       .catch(error => {
         toast.error("Sign up Failed!! Please Try again!");
@@ -228,7 +228,7 @@ const SignUp = () => {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            className="w-full py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-indigo-500/30 transition-all"
+            className="w-full py-3 rounded-lg bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-indigo-500/30 transition-all cursor-pointer"
           >
             Register
           </motion.button>

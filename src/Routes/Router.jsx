@@ -11,6 +11,7 @@ import MyProfile from '../Pages/MyProfile';
 import { LogIn } from 'lucide-react';
 import LoginWithTheme from '../AuthPage/Login';
 import PrivateRoute from '../Provider/PrivateRoute';
+import ForgotPass from '../Pages/ForgotPass';
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +42,9 @@ const Router = createBrowserRouter([
   },
   {
     path: "/login", element: <LoginWithTheme></LoginWithTheme>
+  },
+  {
+    path: "/forgot-password", element: <ForgotPass></ForgotPass>
   },
   {
     path: "/signup", element: <SignUp></SignUp>

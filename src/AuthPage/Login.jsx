@@ -1,4 +1,3 @@
-// LogIn.jsx
 import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, Sparkles } from "lucide-react";
@@ -36,7 +35,6 @@ const LogIn = ({ onSubmit }) => {
 
   return (
     <div className="mt-16 min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
-      {/* Card */}
       <Navbar></Navbar>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -116,8 +114,9 @@ const LogIn = ({ onSubmit }) => {
           </div>
 
 
-          <p className="text-right text-gray-400 hover:underline cursor-pointer">Forgotten Password ?</p>
-
+          <p className="text-lg text-right">
+            <Link to={`/forgot-password?email=${encodeURIComponent(email)}`} className="text-right text-gray-400 hover:underline cursor-pointer ">Forgotten Password ?</Link>
+          </p>
 
           {/* Submit */}
           <motion.button

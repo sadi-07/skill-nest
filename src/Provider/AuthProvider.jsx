@@ -7,6 +7,7 @@ import {
   signOut,
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -31,10 +32,10 @@ const AuthProvider = ({ children }) => {
   const removeUser = () => {
     return signOut(auth)
         .then(() => {
-            alert("Logout Successful!")
+            toast.success("Logout Successful!")
         })
         .catch(error => {
-            alert("Logout Failed!")
+            toast.error("Logout Failed!")
         })
   }
 
