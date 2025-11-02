@@ -7,6 +7,9 @@ import Error from '../Components/Error';
 import SignUp from '../AuthPage/SignUp';
 import AllSkills from '../Pages/AllSkills';
 import SkillDetails from '../Pages/skillDetails';
+import MyProfile from '../Pages/MyProfile';
+import { LogIn } from 'lucide-react';
+import LoginWithTheme from '../AuthPage/Login';
 
 const Router = createBrowserRouter([
   {
@@ -21,6 +24,9 @@ const Router = createBrowserRouter([
         loader: () => fetch("/skills.json")
       },
       {
+        path: "/myprofile", element: <MyProfile></MyProfile>,
+      },
+      {
         path: "/skill/:skillId", element: <SkillDetails></SkillDetails>,
         loader: () => fetch("/skills.json")
       },
@@ -30,7 +36,7 @@ const Router = createBrowserRouter([
     path: "*", element: <Error></Error>
   },
   {
-    path: "/login", element: <Login></Login>
+    path: "/login", element: <LoginWithTheme></LoginWithTheme>
   },
   {
     path: "/signup", element: <SignUp></SignUp>

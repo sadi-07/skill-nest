@@ -1,9 +1,6 @@
-// RegisterWithTheme.jsx
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Sun,
-  Moon,
   User,
   Mail,
   Image as ImageIcon,
@@ -15,9 +12,12 @@ import {
 } from "lucide-react";
 import { Link } from "react-router";
 import Navbar from "../Components/Navbar";
+import { AuthContext } from "../Provider/AuthProvider";
+import { reload, updateProfile } from "firebase/auth";
 
-const SignUp = ({ onSubmit }) => {
-  const [theme, setTheme] = useState("dark");
+const SignUp = () => {
+  const { createUser, setUser } = useContext(AuthContext);
+
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
     name: "",
@@ -26,9 +26,6 @@ const SignUp = ({ onSubmit }) => {
     password: "",
   });
   const [error, setError] = useState("");
-
-  const toggleTheme = () => setTheme(theme === "light" ? "dark" : "light");
-  const isDark = theme === "dark";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -45,35 +42,46 @@ const SignUp = ({ onSubmit }) => {
     return "";
   };
 
-  const handleSubmit = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    const validationError = validatePassword(form.password);
+    const { name, email, photo, password } = form;
+
+    const validationError = validatePassword(password);
     if (validationError) {
       setError(validationError);
       return;
     }
+
     setError("");
-    if (onSubmit) onSubmit(form);
+
+    createUser(email, password)
+      .then(async (res) => {
+        const newUser = res.user;
+        await updateProfile(newUser, {
+          displayName: name,
+          photoURL: photo,
+        });
+
+        await reload(newUser);
+        setUser({ ...newUser });
+        console.log("Updated user:", newUser);
+      })
+      .catch((error) => {
+        console.error("Registration error:", error);
+        setError(error.message);
+      });
   };
 
   return (
-      <div
-      className={` mt-16 min-h-screen flex items-center justify-center p-6 transition-colors duration-500 ${
-          isDark
-          ? "bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800"
-          : "bg-gradient-to-br from-indigo-100 via-white to-blue-100"
-        }`}
-        >
-        <Navbar></Navbar>
-      
+    <div className="mt-16 min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
+      <Navbar />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`w-full max-w-md p-8 rounded-2xl shadow-2xl backdrop-blur-lg border ${
-          isDark ? "bg-white/5 border-white/10" : "bg-white/70 border-gray-200"
-        }`}
+        className="w-full max-w-md p-8 rounded-2xl shadow-2xl backdrop-blur-lg border bg-white/5 border-white/10"
       >
+        {/* Header */}
         <div className="text-center mb-8">
           <motion.div
             animate={{ rotate: [0, 10, -10, 0], scale: [1, 1.05, 1] }}
@@ -82,41 +90,26 @@ const SignUp = ({ onSubmit }) => {
           >
             <Sparkles size={28} className="text-white" />
           </motion.div>
-          <h1
-            className={`mt-5 text-3xl font-bold ${
-              isDark ? "text-white" : "text-gray-900"
-            }`}
-          >
+          <h1 className="mt-5 text-3xl font-bold text-white">
             Create an Account
           </h1>
-          <p
-            className={`mt-1 text-sm ${
-              isDark ? "text-gray-300" : "text-gray-600"
-            }`}
-          >
+          <p className="mt-1 text-sm text-gray-300">
             Join SkillNest and start your learning adventure
           </p>
         </div>
 
-        
-        <form onSubmit={handleSubmit} className="space-y-5">
+        {/* Form */}
+        <form onSubmit={handleRegister} className="space-y-5">
           {/* Name */}
           <div>
             <label
               htmlFor="name"
-              className={`block mb-2 text-sm font-medium ${
-                isDark ? "text-gray-200" : "text-gray-800"
-              }`}
+              className="block mb-2 text-sm font-medium text-gray-200"
             >
               Name
             </label>
             <div className="relative">
-              <User
-                className={`absolute left-3 top-3.5 ${
-                  isDark ? "text-gray-400" : "text-gray-500"
-                }`}
-                size={18}
-              />
+              <User className="absolute left-3 top-3.5 text-gray-400" size={18} />
               <input
                 id="name"
                 name="name"
@@ -125,11 +118,7 @@ const SignUp = ({ onSubmit }) => {
                 value={form.name}
                 onChange={handleChange}
                 placeholder="Your full name"
-                className={`w-full pl-10 pr-3 py-3 rounded-lg focus:outline-none transition-all ${
-                  isDark
-                    ? "bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400"
-                    : "bg-white text-gray-900 placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-indigo-500"
-                }`}
+                className="w-full pl-10 pr-3 py-3 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all"
               />
             </div>
           </div>
@@ -138,19 +127,12 @@ const SignUp = ({ onSubmit }) => {
           <div>
             <label
               htmlFor="email"
-              className={`block mb-2 text-sm font-medium ${
-                isDark ? "text-gray-200" : "text-gray-800"
-              }`}
+              className="block mb-2 text-sm font-medium text-gray-200"
             >
               Email
             </label>
             <div className="relative">
-              <Mail
-                className={`absolute left-3 top-3.5 ${
-                  isDark ? "text-gray-400" : "text-gray-500"
-                }`}
-                size={18}
-              />
+              <Mail className="absolute left-3 top-3.5 text-gray-400" size={18} />
               <input
                 id="email"
                 name="email"
@@ -159,11 +141,7 @@ const SignUp = ({ onSubmit }) => {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="you@skillnest.com"
-                className={`w-full pl-10 pr-3 py-3 rounded-lg focus:outline-none transition-all ${
-                  isDark
-                    ? "bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400"
-                    : "bg-white text-gray-900 placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-indigo-500"
-                }`}
+                className="w-full pl-10 pr-3 py-3 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all"
               />
             </div>
           </div>
@@ -172,17 +150,13 @@ const SignUp = ({ onSubmit }) => {
           <div>
             <label
               htmlFor="photo"
-              className={`block mb-2 text-sm font-medium ${
-                isDark ? "text-gray-200" : "text-gray-800"
-              }`}
+              className="block mb-2 text-sm font-medium text-gray-200"
             >
               Photo URL
             </label>
             <div className="relative">
               <ImageIcon
-                className={`absolute left-3 top-3.5 ${
-                  isDark ? "text-gray-400" : "text-gray-500"
-                }`}
+                className="absolute left-3 top-3.5 text-gray-400"
                 size={18}
               />
               <input
@@ -192,11 +166,7 @@ const SignUp = ({ onSubmit }) => {
                 value={form.photo}
                 onChange={handleChange}
                 placeholder="https://your-photo.com/me.jpg"
-                className={`w-full pl-10 pr-3 py-3 rounded-lg focus:outline-none transition-all ${
-                  isDark
-                    ? "bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400"
-                    : "bg-white text-gray-900 placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-indigo-500"
-                }`}
+                className="w-full pl-10 pr-3 py-3 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all"
               />
             </div>
           </div>
@@ -205,19 +175,12 @@ const SignUp = ({ onSubmit }) => {
           <div>
             <label
               htmlFor="password"
-              className={`block mb-2 text-sm font-medium ${
-                isDark ? "text-gray-200" : "text-gray-800"
-              }`}
+              className="block mb-2 text-sm font-medium text-gray-200"
             >
               Password
             </label>
             <div className="relative">
-              <Lock
-                className={`absolute left-3 top-3.5 ${
-                  isDark ? "text-gray-400" : "text-gray-500"
-                }`}
-                size={18}
-              />
+              <Lock className="absolute left-3 top-3.5 text-gray-400" size={18} />
               <input
                 id="password"
                 name="password"
@@ -226,16 +189,12 @@ const SignUp = ({ onSubmit }) => {
                 value={form.password}
                 onChange={handleChange}
                 placeholder="Enter password"
-                className={`w-full pl-10 pr-10 py-3 rounded-lg focus:outline-none transition-all ${
-                  isDark
-                    ? "bg-white/10 text-white placeholder-gray-400 focus:ring-2 focus:ring-indigo-400"
-                    : "bg-white text-gray-900 placeholder-gray-500 border border-gray-200 focus:ring-2 focus:ring-indigo-500"
-                }`}
+                className="w-full pl-10 pr-10 py-3 rounded-lg bg-white/10 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition-all"
               />
               <button
                 type="button"
                 onClick={() => setShowPassword((s) => !s)}
-                className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-200"
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
                 {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
@@ -252,7 +211,7 @@ const SignUp = ({ onSubmit }) => {
             )}
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -264,8 +223,8 @@ const SignUp = ({ onSubmit }) => {
         </form>
 
         {/* Footer */}
-        <div className="mt-6 text-center text-lg">
-          <p className={isDark ? "text-gray-400" : "text-gray-600"}>
+        <div className="mt-6 text-center text-base">
+          <p className="text-gray-400">
             Already have an account?{" "}
             <Link
               to="/login"
@@ -275,10 +234,38 @@ const SignUp = ({ onSubmit }) => {
             </Link>
           </p>
         </div>
+
+        {/* Google Signup */}
+        <button className="btn text-black border-none w-full mt-3 text-lg py-6 bg-white shadow-lg hover:shadow-indigo-500/30 transition-all">
+          <svg
+            aria-label="Google logo"
+            width="22"
+            height="22"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 512 512"
+          >
+            <g>
+              <path d="m0 0H512V512H0" fill="#fff"></path>
+              <path
+                fill="#34a853"
+                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
+              ></path>
+              <path
+                fill="#4285f4"
+                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
+              ></path>
+              <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
+              <path
+                fill="#ea4335"
+                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
+              ></path>
+            </g>
+          </svg>
+          Signup with Google
+        </button>
       </motion.div>
     </div>
   );
-}
-
+};
 
 export default SignUp;

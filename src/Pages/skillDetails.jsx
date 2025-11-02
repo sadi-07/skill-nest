@@ -79,7 +79,7 @@ const SkillDetails = () => {
                             <input type="email" className="input" placeholder="Email" value={email}
       onChange={(e) => setEmail(e.target.value)}/>
                             
-                            <button type='submit' className="btn bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-move shadow-md hover:shadow-lg text-white font-bold text-base w-80 mt-4">Submit</button>
+                            <button type='submit' className="btn bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-move shadow-md hover:shadow-lg text-white font-bold text-base w-80 mt-4 rounded-lg">Submit</button>
                         </fieldset>
                         </form>
                     </div>
