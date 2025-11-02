@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { use, useContext, useState } from "react";
 import { motion } from "framer-motion";
 import {
   User,
@@ -14,9 +14,10 @@ import { Link } from "react-router";
 import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import { reload, updateProfile } from "firebase/auth";
+import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser, setUser } = useContext(AuthContext);
+  const { createUser, setUser } = use(AuthContext);
 
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
@@ -44,7 +45,33 @@ const SignUp = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    const { name, email, photo, password } = form;
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const photo = e.target.photo.value;
+    const password = e.target.password.value;
+
+    console.log({name, email, photo, password});
+
+    createUser(email, password)
+      .then(res => {
+        const user = res.user;
+        console.log(user);
+
+        updateProfile(user, {
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          console.log("Created!!!")
+        }).catch(err => {
+          console.log(err.message);
+        })
+
+
+        setUser(user);
+      })
+      .catch(error => {
+        toast.error("Sign up Failed!! Please Try again!");
+      })
 
     const validationError = validatePassword(password);
     if (validationError) {
@@ -54,22 +81,7 @@ const SignUp = () => {
 
     setError("");
 
-    createUser(email, password)
-      .then(async (res) => {
-        const newUser = res.user;
-        await updateProfile(newUser, {
-          displayName: name,
-          photoURL: photo,
-        });
-
-        await reload(newUser);
-        setUser({ ...newUser });
-        console.log("Updated user:", newUser);
-      })
-      .catch((error) => {
-        console.error("Registration error:", error);
-        setError(error.message);
-      });
+    
   };
 
   return (

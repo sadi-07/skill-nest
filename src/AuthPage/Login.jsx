@@ -3,11 +3,14 @@ import React, { useContext, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, Lock, Eye, EyeOff, Sparkles } from "lucide-react";
 import Navbar from "../Components/Navbar";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const LogIn = ({ onSubmit }) => {
   const {logInUser} = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
   const handleLogIn = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
@@ -17,10 +20,11 @@ const LogIn = ({ onSubmit }) => {
     logInUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user)
+        console.log(user);
+        navigate(`${location.state? location.state: "/"}`)
       })
       .catch(error => {
-        console.log(error.message)
+        toast.error("Login Failed!! Please Try again!");
       })
   }
 
@@ -134,7 +138,7 @@ const LogIn = ({ onSubmit }) => {
               to="/signup"
               className="font-semibold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
             >
-              Login
+              Create One
             </Link>
           </p>
         </div>

@@ -10,6 +10,7 @@ import SkillDetails from '../Pages/skillDetails';
 import MyProfile from '../Pages/MyProfile';
 import { LogIn } from 'lucide-react';
 import LoginWithTheme from '../AuthPage/Login';
+import PrivateRoute from '../Provider/PrivateRoute';
 
 const Router = createBrowserRouter([
   {
@@ -27,7 +28,10 @@ const Router = createBrowserRouter([
         path: "/myprofile", element: <MyProfile></MyProfile>,
       },
       {
-        path: "/skill/:skillId", element: <SkillDetails></SkillDetails>,
+        path: "/skill/:skillId", element: 
+        <PrivateRoute>
+          <SkillDetails></SkillDetails>
+        </PrivateRoute>,
         loader: () => fetch("/skills.json")
       },
     ]
