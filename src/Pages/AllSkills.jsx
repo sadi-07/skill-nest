@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, useLoaderData, useNavigation } from 'react-router';
+import { Link, useLoaderData, useLocation, useNavigation } from 'react-router';
 import Loading from '../Components/Loading';
 
 const AllSkills = () => {
     const data = useLoaderData();
+    const location = useLocation();
 
     const navigation = useNavigation();
   if (navigation.state === "loading") {
@@ -25,7 +26,7 @@ const AllSkills = () => {
                                     <p className='text-gray-600 font-semibold text-xl'>Price: {skill.price}$</p>
                                 </div>
                                 <div className='text-right'>
-                                    <Link to={`/skill/${skill.skillId}`} className='btn text-base font-semibold bg-blue-500 text-white hover:bg-blue-600'>View Details</Link>
+                                    <Link state={location.state} to={`/skill/${skill.skillId}`} className='btn text-base font-semibold bg-blue-500 text-white hover:bg-blue-600'>View Details</Link>
                                 </div>
                             </div>
                         ))}

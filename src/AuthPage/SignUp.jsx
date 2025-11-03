@@ -17,8 +17,10 @@ import { reload, updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const SignUp = () => {
-  const { createUser, setUser } = use(AuthContext);
+  const { createUser, setUser, GUser } = use(AuthContext);
   const navigate = useNavigate();
+
+  const [googleLoading, setGoogleLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
   const [form, setForm] = useState({
@@ -51,12 +53,12 @@ const SignUp = () => {
     const photo = e.target.photo.value;
     const password = e.target.password.value;
 
-    console.log({name, email, photo, password});
+    //console.log({name, email, photo, password});
 
     createUser(email, password)
       .then(async (res) => {
         const user = res.user;
-        console.log(user);
+        //console.log(user);
 
         await updateProfile(user, {
           displayName: name,
@@ -83,6 +85,27 @@ const SignUp = () => {
 
     
   };
+
+  const handleGoogle = async (e) => {
+  e.preventDefault();
+  if(googleLoading) return;
+  setGoogleLoading (true);
+
+
+  try {
+      const result = await GUser();
+      const user = result.user
+      toast.success("Google Sign in successful!");
+      navigate(location.state ? location.state : "/");
+    } catch (error) {
+      console.error(error);
+      toast.error("Google Login Failed!");
+    } finally {
+      setGoogleLoading(false);
+    }
+
+
+    };
 
   return (
     <div className="mt-16 min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
@@ -248,32 +271,36 @@ const SignUp = () => {
         </div>
 
         {/* Google Signup */}
-        <button className="btn text-black border-none w-full mt-3 text-lg py-6 bg-white shadow-lg hover:shadow-indigo-500/30 transition-all">
-          <svg
-            aria-label="Google logo"
-            width="22"
-            height="22"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 512 512"
-          >
-            <g>
-              <path d="m0 0H512V512H0" fill="#fff"></path>
-              <path
-                fill="#34a853"
-                d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"
-              ></path>
-              <path
-                fill="#4285f4"
-                d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"
-              ></path>
-              <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
-              <path
-                fill="#ea4335"
-                d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"
-              ></path>
-            </g>
-          </svg>
-          Signup with Google
+        <button
+          onClick={handleGoogle}
+          disabled={googleLoading}
+          className={`btn text-black border-none w-full mt-3 text-lg py-6 bg-white shadow-lg hover:shadow-indigo-500/30 transition-all ${
+            googleLoading ? "opacity-70 cursor-not-allowed" : "cursor-pointer"
+          }`}
+        >
+          {googleLoading ? (
+            "Connecting..."
+          ) : (
+            <>
+              <svg
+                aria-label="Google logo"
+                width="22"
+                height="22"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"
+                className="mr-2"
+              >
+                <g>
+                  <path d="m0 0H512V512H0" fill="#fff"></path>
+                  <path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341" />
+                  <path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57" />
+                  <path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path>
+                  <path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path>
+                </g>
+              </svg>
+              Sign up with Google
+            </>
+          )}
         </button>
       </motion.div>
     </div>

@@ -1,15 +1,23 @@
 import React, { use, useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../Provider/AuthProvider';
+import Loading from './Loading';
 
 const Navbar = () => {
-    const { user, removeUser } = use(AuthContext);
-    console.log(user);
+    const { user, removeUser, loading } = use(AuthContext);
+    //console.log(user);
 
     const handleLogOut = () => {
         removeUser();
     }
 
+    if (loading) {
+    return (
+      <div className="fixed top-0 left-0 right-0 z-50 bg-base-200 backdrop-blur-md bg-opacity-90 border-b border-indigo-500">
+        <Loading />
+      </div>
+     );
+    }
     return (
         <div className='bg-base-200 fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-opacity-90 px-2 md:px-0'>
 
@@ -25,9 +33,7 @@ const Navbar = () => {
                             <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/">Home</Link>
 
                             <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/skills">Skills</Link>
-                            {
-                                user ? <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/myprofile">My Profile</Link> : ""
-                            }
+                            <Link className='font-semibold text-gray-500 text-base py-1 hover:bg-base-200' to="/myprofile">My Profile</Link>
                         </ul>
                     </div>
                     <Link
@@ -44,12 +50,9 @@ const Navbar = () => {
 
 
                         <NavLink className='font-semibold text-gray-500 text-lg' to="/skills">Skills</NavLink>
-                        {
-                            user ? <NavLink className='font-semibold text-gray-500 text-lg' to="/myprofile">My Profile</NavLink> : ""
-                        }
-                        <NavLink className='font-semibold text-gray-500 text-base' to="/myprofile">{user && user.email}</NavLink>
-
-
+                        <NavLink className='font-semibold text-gray-500 text-lg' to="/myprofile">My Profile</NavLink>
+                        
+                        
                     </ul>
                 </div>
                 <div className="navbar-end gap-5 md:flex-row">
@@ -59,7 +62,7 @@ const Navbar = () => {
                             <div className="relative group">
                                 <img
                                     className="h-12 w-12 rounded-full cursor-pointer border-2 border-transparent hover:border-purple-400 transition-all duration-300"
-                                    src={user.photoURL}
+                                    src={user.photoURL || "https://i.ibb.co/MBtjqXQ/default-avatar.png"}
                                     alt={user.displayName || "User"}
                                 />
 

@@ -12,6 +12,7 @@ import { LogIn } from 'lucide-react';
 import LoginWithTheme from '../AuthPage/Login';
 import PrivateRoute from '../Provider/PrivateRoute';
 import ForgotPass from '../Pages/ForgotPass';
+import Loading from '../Components/Loading';
 
 const Router = createBrowserRouter([
   {
@@ -23,7 +24,8 @@ const Router = createBrowserRouter([
       },
       {
         path: "/skills", element: <AllSkills></AllSkills>,
-        loader: () => fetch("/skills.json")
+        loader: () => fetch("/skills.json"),
+        hydrateFallbackElement: <Loading></Loading>
       },
       {
         path: "/myprofile", element: <MyProfile></MyProfile>,
@@ -33,7 +35,8 @@ const Router = createBrowserRouter([
         <PrivateRoute>
           <SkillDetails></SkillDetails>
         </PrivateRoute>,
-        loader: () => fetch("/skills.json")
+        loader: () => fetch("/skills.json"),
+        hydrateFallbackElement: <Loading></Loading>
       },
     ]
   },
