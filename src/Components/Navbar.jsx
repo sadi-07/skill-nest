@@ -38,7 +38,7 @@ const Navbar = () => {
                     </div>
                     <Link
                         to="/"
-                        className="font-extrabold text-3xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500"
+                        className="font-bold md:font-extrabold text-xl md:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-pink-500"
                     >
                         SKILL NEST
                     </Link>
@@ -71,14 +71,14 @@ const Navbar = () => {
                                 </div>
                             </div>
                         ) : <Link to="/signup" className="btn bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
- text-white py-5 font-semibold text-lg w-30 md:w-40 rounded-3xl">Sign Up</Link>
+ text-white py-5 font-semibold text-sm  md:text-lg md:w-40 rounded-3xl">Sign Up</Link>
                     }
 
 
                     {
                         user ? <Link onClick={handleLogOut} className="btn bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
  text-white py-5 font-semibold text-lg w-30 md:w-40 rounded-3xl">Log Out</Link> : <Link to="/login" className="btn bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-gradient-move shadow-md hover:shadow-lg hover:scale-105
- text-white py-5 font-semibold text-lg w-30 md:w-40 rounded-3xl">Log in</Link>
+ text-white py-5 font-semibold text-sm  md:text-lg md:w-40 rounded-3xl">Log in</Link>
                     }
 
 
