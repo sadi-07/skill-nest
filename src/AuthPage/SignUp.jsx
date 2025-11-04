@@ -15,11 +15,12 @@ import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Provider/AuthProvider";
 import { reload, updateProfile } from "firebase/auth";
 import toast from "react-hot-toast";
+import Loading from "../Components/Loading";
 
 const SignUp = () => {
   const { createUser, setUser, GUser } = use(AuthContext);
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
@@ -46,35 +47,13 @@ const SignUp = () => {
     return "";
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
+
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photo = e.target.photo.value;
     const password = e.target.password.value;
-
-    //console.log({name, email, photo, password});
-
-    createUser(email, password)
-      .then(async (res) => {
-        const user = res.user;
-        //console.log(user);
-
-        await updateProfile(user, {
-          displayName: name,
-          photoURL: photo,
-        });
-
-        setUser({ ...user, displayName: name, photoURL: photo });
-        toast.success("Account created successfully!")
-        
-
-        navigate("/");
-      })
-      .catch(error => {
-        toast.error("Sign up Failed!! Please Try again!");
-      })
-
     const validationError = validatePassword(password);
     if (validationError) {
       setError(validationError);
@@ -82,11 +61,34 @@ const SignUp = () => {
     }
 
     setError("");
+    setLoading(true);
 
-    
+
+    //console.log({name, email, photo, password});
+
+    try {
+
+      const res = await createUser(email, password);
+      const user = res.user;
+
+      await updateProfile(user, {
+        displayName: name,
+        photoURL: photo,
+      });
+
+      setUser({ ...user, displayName: name, photoURL: photo });
+      toast.success("Account created successfully!");
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+      toast.error("Sign up failed! Please try again.");
+    } finally {
+      setLoading(false); 
+    }
   };
 
-  const handleGoogle = async (e) => {
+    
+const handleGoogle = async (e) => {
   e.preventDefault();
   if(googleLoading) return;
   setGoogleLoading (true);
@@ -102,13 +104,15 @@ const SignUp = () => {
       toast.error("Google Login Failed!");
     } finally {
       setGoogleLoading(false);
-    }
-
-
     };
+
+  };
+
+  
 
   return (
     <div className="mt-16 min-h-screen flex items-center justify-center p-6 bg-gradient-to-br from-slate-900 via-indigo-900 to-slate-800">
+      {loading && <Loading />}
       <Navbar />
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -5,11 +5,12 @@ import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
 
 const MainLayout = () => {
-    const { state } = useNavigation();
+    const navigation = useNavigation();
     return (
         <div className=''>
             <Navbar></Navbar>
-            {state=="loading" ? <Loading></Loading> : <Outlet></Outlet>}
+            {navigation.state === "loading" && <Loading />}
+            <Outlet></Outlet>
             <Footer></Footer>
         </div>
     );

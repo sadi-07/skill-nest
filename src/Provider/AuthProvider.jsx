@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 import toast from "react-hot-toast";
+import Loading from "../Components/Loading";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -39,7 +40,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const createUser = (email, password) => {
-    setLoading(true);
+    //setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
@@ -65,7 +66,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const logInUser = (email, password) => {
-    setLoading(true);
+    // setLoading(true);
     return signInWithEmailAndPassword(auth, email, password)
   };
 
@@ -73,7 +74,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={authData}>
-      {children}
+      {loading ? <Loading /> : children}
     </AuthContext.Provider>
   );
 };
